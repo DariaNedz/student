@@ -1,7 +1,8 @@
 #ifndef PERSON_H_INCLUDED
 #define PERSON_H_INCLUDED
-#include <string>
 #include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -9,10 +10,10 @@ class Person
 {
 public:
     Person();
-    Person(string pnumber, string pname, int page);
+    Person(int pnumber, string pname, int page);
 
-    string getNumber();
-    void setNumber(string number);
+    int getNumber();
+    void setNumber(int number);
 
     string getName();
     void setName(string name);
@@ -20,11 +21,12 @@ public:
     int getAge();
     void setAge(int age);
 
-    void print();
+    void Search();
 
 private:
-    string number;
+    int number;
     string name;
     int age; // 0 - unknown.
 };
+
 #endif
