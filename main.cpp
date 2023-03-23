@@ -73,24 +73,41 @@ int main()
                 cin >> number;
                 FileDB f1;
                 auto ret = f1.FindPersonByNumber(number, people);
+                cout << ": " << ret.getNumber() << " :" << endl;
+                cout << "- " << ret.getName() << " -" << endl;
+                cout << "- " << ret.getAge() << " -" << "\n" << endl;
+                cout << "\n";
             }
             if (choice == "name") {
                 cout << "Enter name : ";
                 cin >> name;
                 FileDB f1;
                 auto ret = f1.FindPersonByName(name, people);
+                for (auto p : ret) {
+                    cout << "\n: " << p.getNumber() << " :" << endl;
+                    cout << "- " << p.getName() << " -" << endl;
+                    cout << "- " << p.getAge() << " -" << "\n" << endl;
+                    cout << "\n";
+                }
             }
+
             if (choice == "age") {
                 cout << "Enter age : ";
                 cin >> age;
                 FileDB f1;
                 auto ret = f1.FindPersonByAge(age, people);
+                for (auto p : ret) {
+                    cout << "\n: " << p.getNumber() << " :" << endl;
+                    cout << "- " << p.getName() << " -" << endl;
+                    cout << "- " << p.getAge() << " -" << "\n" << endl;
+                    cout << "\n";
+                }
             }
-        }
+            }
 
             if (function == "exit") {
                 for (auto person : people) {
-                    file << ": " << person.getNumber() << " :" << endl;
+                    file << "\n: " << person.getNumber() << " :" << endl;
                     file << "- " << person.getName() << " -" << endl;
                     file << "- " << person.getAge() << " -" << "\n" << endl;
                 }
@@ -98,6 +115,6 @@ int main()
                 break;
             }
         }
-        file.close();
+    file.close();
     return 0;
 }
