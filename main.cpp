@@ -4,6 +4,7 @@
 #include <fstream>
 #include <algorithm>
 #include "person.hpp"
+#include "fileDB.hpp"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ int main()
         string name;
         int age;
         string function;
+        string choice;
 
         cout << "Enter: add    - add student\n";
         cout << "       delete - delete student\n";
@@ -63,20 +65,39 @@ int main()
         }
 
         if (function == "search") {
-            cout << "By what you want to find?\n";
+            cout << "By what you want to find (number/name/age)?\n";
             cout << "By ";
+            cin >> choice;
+            if (choice == "number") {
+                cout << "Enter number : ";
+                cin >> number;
+                FileDB f1;
+                auto ret = f1.FindPersonByNumber(number, people);
+            }
+            if (choice == "name") {
+                cout << "Enter name : ";
+                cin >> name;
+                FileDB f1;
+                auto ret = f1.FindPersonByName(name, people);
+            }
+            if (choice == "age") {
+                cout << "Enter age : ";
+                cin >> age;
+                FileDB f1;
+                auto ret = f1.FindPersonByAge(age, people);
+            }
         }
 
-        if (function == "exit") {
-            for (auto person : people) {
-                file << ": " << person.getNumber() << " :" << endl;
-                file << "- " << person.getName() << " -" << endl;
-                file << "- " << person.getAge() << " -" << "\n" << endl;
+            if (function == "exit") {
+                for (auto person : people) {
+                    file << ": " << person.getNumber() << " :" << endl;
+                    file << "- " << person.getName() << " -" << endl;
+                    file << "- " << person.getAge() << " -" << "\n" << endl;
+                }
+                file.close();
+                break;
             }
-            file.close();
-            break;
         }
-    }
-    file.close();
+        file.close();
     return 0;
 }
