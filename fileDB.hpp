@@ -9,5 +9,5 @@ public:
 	vector<Person> FindPersonByName (string name, vector<Person>& people);
 	vector<Person> FindPersonByAge (int age, vector<Person>& people);
 
-	vector<Person> DeletePerson(string name, int age, vector<Person>& people);
+	void DeletePerson (string name, int age, vector<Person>& people);
 };
