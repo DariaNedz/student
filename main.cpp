@@ -19,28 +19,29 @@ int main()
         int age;
         string function;
 
-        cout << "----- enter function -----\n";
-        cout << "-----      add       -----" << endl;
-        cout << "-----     delete     -----" << endl;
-        cout << "-----      edit      -----" << endl;
-        cout << "-----     search     -----" << endl;
-        cout << "-----      exit      -----" << endl;
-        cout << "--------------------------\n";
+        cout << "Enter: add    - add student\n";
+        cout << "       delete - delete student\n";
+        cout << "       edit   - edit student\n";
+        cout << "       search - search for a student\n";
+        cout << "       exit   - exit the programme\n";
+        cout << "\n! all will be saved to file after enter EXIT !\n";
 
+        cout << "\n- ";
         cin >> function;
         if (function == "add") {
-            cout << "------ enter number ------\n";
+            cout << "\n: enter number : ";
             cin >> number;
             student.setNumber(number);
 
-            cout << "------- enter name -------\n";
+            cout << ": enter name : ";
             cin >> name;
             student.setName(name);
 
             do {
                 invalidAge = false;
-                cout << "------- enter age --------\n";
+                cout << ": enter age : ";
                 cin >> age;
+                cout << "\n";
                 try {
                     student.setAge(age);
                 }
@@ -62,14 +63,15 @@ int main()
         }
 
         if (function == "search") {
-            cout << " - ";
+            cout << "By what you want to find?\n";
+            cout << "By ";
         }
 
         if (function == "exit") {
             for (auto person : people) {
-                file << "- " << person.getNumber() << " -" << endl;
-                file << ": " << person.getName() << " :" << endl;
-                file << ": " << person.getAge() << " :" << "\n" << endl;
+                file << ": " << person.getNumber() << " :" << endl;
+                file << "- " << person.getName() << " -" << endl;
+                file << "- " << person.getAge() << " -" << "\n" << endl;
             }
             file.close();
             break;
