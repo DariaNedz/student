@@ -57,11 +57,17 @@ int main()
         }
 
         if (function == "delete") {
-            cout << " - ";
+            cout << "Enter name : ";
+            cin >> name;
+            cout << "Enter age : ";
+            cin >> age;
+            FileDB f2;
+            auto ret = f2.DeletePerson(name, age, people);
+            cout << "Deleted. Enter EXIT to check.\n";
         }
 
         if (function == "edit") {
-            cout << " - ";
+            cout << " - \n";
         }
 
         if (function == "search") {
@@ -71,36 +77,36 @@ int main()
             if (choice == "number") {
                 cout << "Enter number : ";
                 cin >> number;
+                cout << "\n";
                 FileDB f1;
                 auto ret = f1.FindPersonByNumber(number, people);
                 cout << ": " << ret.getNumber() << " :" << endl;
                 cout << "- " << ret.getName() << " -" << endl;
                 cout << "- " << ret.getAge() << " -" << "\n" << endl;
-                cout << "\n";
             }
             if (choice == "name") {
                 cout << "Enter name : ";
                 cin >> name;
+                cout << "\n";
                 FileDB f1;
                 auto ret = f1.FindPersonByName(name, people);
                 for (auto p : ret) {
-                    cout << "\n: " << p.getNumber() << " :" << endl;
+                    cout << ": " << p.getNumber() << " :" << endl;
                     cout << "- " << p.getName() << " -" << endl;
                     cout << "- " << p.getAge() << " -" << "\n" << endl;
-                    cout << "\n";
                 }
             }
 
             if (choice == "age") {
                 cout << "Enter age : ";
                 cin >> age;
+                cout << "\n";
                 FileDB f1;
                 auto ret = f1.FindPersonByAge(age, people);
                 for (auto p : ret) {
-                    cout << "\n: " << p.getNumber() << " :" << endl;
+                    cout << ": " << p.getNumber() << " :" << endl;
                     cout << "- " << p.getName() << " -" << endl;
                     cout << "- " << p.getAge() << " -" << "\n" << endl;
-                    cout << "\n";
                 }
             }
             }
