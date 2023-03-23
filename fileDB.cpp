@@ -33,3 +33,15 @@ vector<Person> FileDB::FindPersonByAge (int age, vector<Person>& people)
     }
     return p;
 }
+
+vector <Person> FileDB::DeletePerson(string name, int age, vector<Person>& people)
+{
+    vector<Person> p;
+    vector<Person>::iterator it;
+    p.erase(it);
+    for (auto& person : people) {
+        if (person.getName() == name && person.getAge() == age)
+            p.erase(it);
+    }
+    return p;
+}
