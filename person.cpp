@@ -1,7 +1,8 @@
 #include "person.hpp"
-#include <iostream>
-#include <algorithm>
 #include <vector>
+#include <iostream>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -11,6 +12,8 @@ Person::Person()
     name = "";
     age = 0;
 }
+
+
 Person::Person(int pnumber, string pname, int page)
 {
     number = pnumber;
@@ -19,6 +22,7 @@ Person::Person(int pnumber, string pname, int page)
         age = page;
     }
 }
+
 int Person::getNumber()
 {
     return number;
@@ -31,6 +35,7 @@ int Person::getAge()
 {
     return age;
 }
+
 void Person::setNumber(int number)
 {
     this->number = number;
@@ -45,12 +50,18 @@ void Person::setAge(int age)
         this->age = age;
     }
 }
-void Search() {
-    /*
-    vector <Person> ::iterator it = find(people.begin(), people.end(), 1);
-    if (it != people.end())
-        cout << "- element found -" << endl;
-    else
-        cout << "- element NOT found -" << endl;
-    */
+/*void SearchByNumber() {
+    if ( == "number") {
+
+    }
 }
+void SearchByName() {
+    if ( == "name") {
+
+    }
+}
+void SearchByAge() {
+    if ( == "age") {
+
+    }
+}*/
