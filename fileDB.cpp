@@ -18,22 +18,20 @@ Person FileDB::FindPersonByNumber(int number, vector<Person>& people)
 
 vector<Person> FileDB::FindPersonByName(string name, vector<Person>& people)
 {
-    // Load Data => vector
-
+    vector<Person> p;
     for (auto& person : people) {
         if (person.getName() == name)
-            return people;
+            p.push_back(person);
     }
-    return vector<Person>();
+    return p;
 }
 
 vector<Person> FileDB::FindPersonByAge(int age, vector<Person>& people)
 {
-    // Load Data => vector
-
+    vector<Person> p;
     for (auto& person : people) {
         if (person.getAge() == age)
-            return people;
+            p.push_back(person);
     }
-    return vector<Person>();
+    return p;
 }
