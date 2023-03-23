@@ -62,7 +62,7 @@ int main()
             cout << "Enter age : ";
             cin >> age;
             FileDB f2;
-            auto ret = f2.DeletePerson(name, age, people);
+            f2.DeletePerson(name, age, people);
             cout << "Deleted. Enter EXIT to check.\n";
         }
 
