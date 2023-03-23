@@ -21,7 +21,9 @@ public:
     int getAge();
     void setAge(int age);
 
-    void Search();
+    void SearchByNumber();
+    void SearchByName();
+    void SearchByAge();
 
 private:
     int number;
