@@ -50,18 +50,3 @@ void Person::setAge(int age)
         this->age = age;
     }
 }
-/*void SearchByNumber() {
-    if ( == "number") {
-
-    }
-}
-void SearchByName() {
-    if ( == "name") {
-
-    }
-}
-void SearchByAge() {
-    if ( == "age") {
-
-    }
-}*/
