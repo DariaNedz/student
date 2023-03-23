@@ -5,10 +5,8 @@
 
 using namespace std;
 
-Person FileDB::FindPersonByNumber(int number, vector<Person>& people)
+Person FileDB::FindPersonByNumber (int number, vector<Person>& people)
 {
-    // Load Data => vector
-
     for (auto& person : people) {
         if (person.getNumber() == number)
             return person;
@@ -16,7 +14,7 @@ Person FileDB::FindPersonByNumber(int number, vector<Person>& people)
     return Person();
 }
 
-vector<Person> FileDB::FindPersonByName(string name, vector<Person>& people)
+vector<Person> FileDB::FindPersonByName (string name, vector<Person>& people)
 {
     vector<Person> p;
     for (auto& person : people) {
@@ -26,7 +24,7 @@ vector<Person> FileDB::FindPersonByName(string name, vector<Person>& people)
     return p;
 }
 
-vector<Person> FileDB::FindPersonByAge(int age, vector<Person>& people)
+vector<Person> FileDB::FindPersonByAge (int age, vector<Person>& people)
 {
     vector<Person> p;
     for (auto& person : people) {
