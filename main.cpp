@@ -3,83 +3,70 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+
 #include "person.hpp"
 #include "fileDB.hpp"
+// #include "fileDB.cpp"
 
 using namespace std;
 
+vector<Person> PeopleVector;
+
 int main()
 {
-    ofstream file("c:\\tmp\\Student.txt");
-    vector<Person> people;
-    bool invalidAge;
+    FileDB fileDB;
+    fileDB.LoadPerson(PeopleVector);
+
+    // bool invalidAge;
+    string function;
+    string choice;
+
     for (int i = 0; i < 15; i++) {
+        FileDB saved;
         Person student{};
         int number;
         string name;
         int age;
-        string function;
-        string choice;
 
+        ofstream file("c:\\tmp\\NewStudent.txt");
         cout << "Enter: add    - add student\n";
         cout << "       delete - delete student\n";
         cout << "       edit   - edit student\n";
-        cout << "       search - search for a student\n";
-        cout << "       exit   - exit the programme\n";
+        cout << "       find   - find student\n";
+        cout << "       exit   - save and exit the programme\n";
         cout << "\n! all will be saved to file after enter EXIT !\n";
 
         cout << "\n- ";
         cin >> function;
         if (function == "add") {
-            cout << "\n: enter number : ";
-            cin >> number;
-            student.setNumber(number);
-
-            cout << ": enter name : ";
-            cin >> name;
-            student.setName(name);
-
-            do {
-                invalidAge = false;
-                cout << ": enter age : ";
-                cin >> age;
-                cout << "\n";
-                try {
-                    student.setAge(age);
-                }
-                catch (invalid_argument invalidArg) {
-                    cerr << "\nError: " << invalidArg.what() << endl;
-                    invalidAge = true;
-                }
-            } //do
-            while (invalidAge);
-            people.push_back(student);
+            FileDB added;
+            added.AddPerson();
+            saved.SavePerson(PeopleVector);
         }
 
         if (function == "delete") {
-            cout << "Enter name : ";
-            cin >> name;
-            cout << "Enter age : ";
-            cin >> age;
-            FileDB f2;
-            f2.DeletePerson(name, age, people);
+            FileDB deleted;
+            deleted.DeletePerson(number, PeopleVector);
             cout << "Deleted. Enter EXIT to check.\n";
+            saved.SavePerson(PeopleVector);
         }
 
         if (function == "edit") {
-            cout << " - \n";
+            FileDB edited;
+            edited.EditPerson(PeopleVector);
+            saved.SavePerson(PeopleVector);
         }
 
-        if (function == "search") {
-            cout << "By what you want to find (number/name/age)?\n";
+        if (function == "find") {
+            cout << "By what you want to find (id/name/age)?\n";
             cout << "By ";
             cin >> choice;
-            if (choice == "number") {
-                cout << "Enter number : ";
+            if (choice == "id") {
+                cout << "Enter id : ";
                 cin >> number;
                 cout << "\n";
                 FileDB f1;
-                auto ret = f1.FindPersonByNumber(number, people);
+                auto ret = f1.FindPersonByNumber(number, PeopleVector);
                 cout << ": " << ret.getNumber() << " :" << endl;
                 cout << "- " << ret.getName() << " -" << endl;
                 cout << "- " << ret.getAge() << " -" << "\n" << endl;
@@ -89,7 +76,7 @@ int main()
                 cin >> name;
                 cout << "\n";
                 FileDB f1;
-                auto ret = f1.FindPersonByName(name, people);
+                auto ret = f1.FindPersonByName(name, PeopleVector);
                 for (auto p : ret) {
                     cout << ": " << p.getNumber() << " :" << endl;
                     cout << "- " << p.getName() << " -" << endl;
@@ -102,25 +89,20 @@ int main()
                 cin >> age;
                 cout << "\n";
                 FileDB f1;
-                auto ret = f1.FindPersonByAge(age, people);
+                auto ret = f1.FindPersonByAge(age, PeopleVector);
                 for (auto p : ret) {
                     cout << ": " << p.getNumber() << " :" << endl;
                     cout << "- " << p.getName() << " -" << endl;
                     cout << "- " << p.getAge() << " -" << "\n" << endl;
                 }
             }
-            }
-
-            if (function == "exit") {
-                for (auto person : people) {
-                    file << "\n: " << person.getNumber() << " :" << endl;
-                    file << "- " << person.getName() << " -" << endl;
-                    file << "- " << person.getAge() << " -" << "\n" << endl;
-                }
-                file.close();
-                break;
-            }
+            saved.SavePerson(PeopleVector);
         }
-    file.close();
+
+        if (function == "exit") {
+            saved.SavePerson(PeopleVector);
+            break;
+        }
+    }
     return 0;
 }
