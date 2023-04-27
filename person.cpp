@@ -18,7 +18,7 @@ Person::Person(int pnumber, string pname, int page)
 {
     number = pnumber;
     name = pname;
-    if (page >= 0 && page < 100) {
+    if (page >= 0 && page <= 150) {
         age = page;
     }
 }
@@ -38,7 +38,7 @@ int Person::getAge()
 
 void Person::setNumber(int number)
 {
-    this->number = number;
+        this->number = number;
 }
 void Person::setName(string name)
 {
@@ -46,7 +46,7 @@ void Person::setName(string name)
 }
 void Person::setAge(int age)
 {
-    if (age >= 0 && age < 100) {
+    if (age >= 0 && age <= 150) {
         this->age = age;
     }
 }
