@@ -21,14 +21,13 @@ public:
     int getAge();
     void setAge(int age);
 
-    void SearchByNumber();
-    void SearchByName();
-    void SearchByAge();
-
 private:
     int number;
     string name;
     int age; // 0 - unknown.
 };
+
+
+
 
 #endif
