@@ -4,10 +4,14 @@
 using namespace std;
 
 class FileDB {
-public:
-	Person FindPersonByNumber (int number, vector<Person>& people);
-	vector<Person> FindPersonByName (string name, vector<Person>& people);
-	vector<Person> FindPersonByAge (int age, vector<Person>& people);
+  public:
+	Person FindPersonByNumber(int number, vector<Person>& PeopleVector);
+	vector<Person> FindPersonByName(string name, vector<Person>& PeopleVector);
+	vector<Person> FindPersonByAge(int age, vector<Person>& PeopleVector);
 
-	void DeletePerson (string name, int age, vector<Person>& people);
+	void LoadPerson(vector<Person>& people);
+	void SavePerson(vector<Person>& people);
+	Person AddPerson();
+	void DeletePerson(int number, vector<Person>& people);
+	void EditPerson(vector<Person>& people);
 };
